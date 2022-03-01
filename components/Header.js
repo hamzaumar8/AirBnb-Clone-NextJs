@@ -14,9 +14,9 @@ import { useRouter } from "next/router";
 
 function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
-  const [noOfGuest, setNoOfGuest] = useState(1);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [noOfGuest, setNoOfGuest] = useState(1);
   const router = useRouter();
 
   const handleSelect = (ranges) => {
@@ -24,26 +24,27 @@ function Header({ placeholder }) {
     setEndDate(ranges.selection.endDate);
   };
 
-  const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
-    key: "selection",
-  };
-
   const resetInput = () => {
     setSearchInput("");
   };
 
-  const handleSearch = () => {
+  const search = () => {
     router.push({
       pathname: "/search",
       query: {
         location: searchInput,
-        startDate: startDate.toISOString,
-        endDate: endDate.toISOString,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
         noOfGuest,
       },
     });
+  };
+  console;
+
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
   };
 
   return (
@@ -109,8 +110,8 @@ function Header({ placeholder }) {
             <button className="flex-grow text-gray-500" onClick={resetInput}>
               Cancel
             </button>
-            <button className="flex-grow text-red-400" onClick={handleSearch}>
-              Save
+            <button className="flex-grow text-red-400" onClick={search}>
+              Search
             </button>
           </div>
         </div>

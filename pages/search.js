@@ -9,10 +9,8 @@ function Search({ searchResults }) {
   const router = useRouter();
   const { location, startDate, endDate, noOfGuest } = router.query;
 
-  const formattedStartDate = startDate;
-  // const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = endDate;
-  // const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
+  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
+  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
   return (
@@ -26,7 +24,7 @@ function Search({ searchResults }) {
             300+ stays for {noOfGuest} guests
           </p>
           <h1 className="text-3xl font-semibold mb-6 mt-2 capitalize">
-            {/* Stays - {range} -in {location} */}
+            Stays - {range} - in {location}
           </h1>
 
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
